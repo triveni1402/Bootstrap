@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login</title>
+   
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-container h2 {
+            font-family: 'Instagram', sans-serif;
+            font-weight: bold;
+        }
+        .login-container .form-group img {
+            width: 16px;
+            height: 16px;
+        }
+        .login-container a {
+            color: #007bff;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+        .click{
+            text-align:center;
+            top: 75%;
+            left: 40%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container text-center">
+        <h2 style="font-style: oblique;">Instagram</h2>
+        <form id="loginForm">
+            <div class="form-group input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <img src="https://img.icons8.com/material-rounded/24/000000/user.png" alt="user icon">
+                    </span>
+                </div>
+                <input type="text" class="form-control" id="username" placeholder="Username" required>
+            </div>
+            <div class="form-group input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <img src="https://img.icons8.com/material-rounded/24/000000/lock.png" alt="lock icon">
+                    </span>
+                </div>
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            <div class="form-group form-check mt-3 text-left">
+                <input type="checkbox" class="form-check-input" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+                <a href="#" class="float-right">Forgot Password?</a>
+            </div>
+            
+        </form>
+    </div><br><br>
+    <div class="click">
+        <p >Don't have an account? <a href="#">Sign up here.</a></p></div>
+    
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const rememberMe = document.getElementById('rememberMe').checked;
+
+   
+    if (username && password) {
+        alert('Login successful!');
+       
+    } else {
+        alert('Please fill in all fields.');
+    }
+});
+
+    </script>
+</body>
+</html>

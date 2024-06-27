@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button  type="button" onclick=" document.getElementById('date').innerHTML = currentDate;">show date</button>
+    <p id="date"></p>
+    <button  type="button" onclick=" document.getElementById('time').innerHTML = d;">show Time</button>
+    <p id="time"></p>
+    <script>
+        const d = new Date();
+        const date = new Date();
+        const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        let day = date.getDate();
+        let month = months[date.getMonth()];
+        let year = date.getFullYear();
+
+
+        let currentDate = `${day}/${month}/${year}`;
+
+    </script>
+</body>
+</html>

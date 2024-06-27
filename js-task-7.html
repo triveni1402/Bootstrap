@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .train {
+            position: relative;
+            animation-name: move;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-play-state: paused; 
+        }
+
+        @keyframes move {
+            from {left: 0;}
+            to {left: 80%;}
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="train1.png" id="train" class="train" alt="Train" width="200">
+        <h3 style="color: navy;">Click the following buttons to handle animation</h3>
+        <div class="button-container">
+            <button onclick="startAnimation()">Start</button>
+            <button onclick="stopAnimation()">Stop</button>
+        </div>
+    </div>
+
+    <script>
+        var train = document.getElementById("train");
+
+        function startAnimation() {
+            train.style.animationPlayState = "running";
+        }
+
+        function stopAnimation() {
+            train.style.animationPlayState = "paused";
+        }
+    </script>
+</body>
+</html>

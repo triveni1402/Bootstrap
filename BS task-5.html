@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form with Icons</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        .invalid-feedback {
+            display: none;
+        }
+        .is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+        .form-group {
+            position: relative;
+        }
+        .form-group .form-control {
+            padding-left: 40px;
+        }
+        .form-group .fa {
+            position: absolute;
+            left: 10px;
+            top: 40%;
+            transform: translateY(-50%);
+        }
+        .box {
+            position: absolute;
+            top: 10%;
+            left: 35%;
+            background-color: #efefef;
+            width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="container mt-5">
+            <form id="contactForm" novalidate>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><label for="firstName">First Name</label></td>
+                            <td>
+                                <div class="form-group">
+                                    <i class="fa fa-user"></i>
+                                    <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                                    <div class="invalid-feedback">Please supply your first name</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="lastName">Last Name</label></td>
+                            <td>
+                                <div class="form-group">
+                                    <i class="fa fa-user"></i>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                                    <div class="invalid-feedback">Please supply your last name</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="email">E-Mail</label></td>
+                            <td>
+                                <div class="form-group">
+                                    <i class="fa fa-envelope"></i>
+                                    <input type="email" class="form-control" id="email" placeholder="E-Mail Address" required>
+                                    <div class="invalid-feedback">Please supply your email address</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="phone">Phone #</label></td>
+                            <td>
+                                <div class="form-group">
+                                    <i class="fa fa-phone"></i>
+                                    <input type="text" class="form-control" id="phone" placeholder="(845)555-1212" required>
+                                    <div class="invalid-feedback">Please supply your phone number</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="address">Address</label></td>
+                            <td>
+                                <div class="form-group">
+                                    <i class="fa fa-home"></i>
+                                    <input type="text" class="form-control" id="address" placeholder="Address" required>
+                                    <div class="invalid-feedback">Please supply your street address</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="city">City</label></td>
+                            <td>
+                                <div class="form-group">
+                                    <i class="fa fa-city"></i>
+                                    <input type="text" class="form-control" id="city" placeholder="City" required>
+                                    <div class="invalid-feedback">Please supply your city</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="state">State</label></td>
+                            <td>
+                                <div class="form-group">
+                                    <i class="fa fa-globe-americas"></i>
+                                    <select class="form-control" id="state" required>
+                                        <option value="">Please select your state</option>
+                                        <option>State 1</option>
+                                        <option>State 2</option>
+                                        <option>State 3</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select your state</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Do you have hosting?</label></td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="hosting" id="hostingYes" value="yes" required>
+                                        <label class="form-check-label" for="hostingYes">Yes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="hosting" id="hostingNo" value="no" required>
+                                        <label class="form-check-label" for="hostingNo">No</label>
+                                    </div>
+                                    <div class="invalid-feedback">Please select an option</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="projectDescription">Project Description</label></td>
+                            <td>
+                                <div class="form-group">
+                                    <i class="fa fa-pencil-alt"></i>
+                                    <textarea class="form-control" id="projectDescription" rows="3" placeholder="Project Description" required></textarea>
+                                    <div class="invalid-feedback">Please provide a project description</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" class="btn btn-primary btn-warning">Send</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var form = document.getElementById('contactForm');
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        Array.from(form.elements).forEach((input) => {
+                            if (input.checkValidity() === false) {
+                                input.classList.add('is-invalid');
+                            } else {
+                                input.classList.remove('is-invalid');
+                            }
+                        });
+                    }
+                }, false);
+            }, false);
+        })();
+    </script>
+</body>
+</html>

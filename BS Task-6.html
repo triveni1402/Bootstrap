@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bs task-6</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .box {
+        position: absolute;
+        top: 10%;
+        left: 35%;
+        background-color: #efefef;
+        width:450px;
+        height:500px;
+        padding:30px;
+    }
+  </style>
+</head>
+<body>
+    <div class="box">
+    <div class="container mt-5">
+        <form id="myForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+                <div class="invalid-feedback">Name is required</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
+                <div class="invalid-feedback">Email is required</div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+                <div class="invalid-feedback">Password is required</div>
+            </div>
+            <div class="form-group">
+                <label for="hobbies">Hobbies</label>
+                <select class="form-control" id="hobbies" name="hobbies">
+                    <option value="" disabled selected></option>
+                    <option value="reading">Reading</option>
+                    <option value="traveling">Traveling</option>
+                    <option value="sports">Sports</option>
+                    <option value="music">Music</option>
+                    <option value="singing">Singing</option>
+                    <option value="dancing">Dancing</option>
+                </select>
+               
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger form-control">Submit</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            var isValid = true;
+
+          
+            var name = document.getElementById('name').value;
+            if (!name) {
+                document.getElementById('name').classList.add('is-invalid');
+                isValid = false;
+            } else {
+                document.getElementById('name').classList.remove('is-invalid');
+            }
+
+          
+            var email = document.getElementById('email').value;
+            if (!email) {
+                document.getElementById('email').classList.add('is-invalid');
+                isValid = false;
+            } else {
+                document.getElementById('email').classList.remove('is-invalid');
+            }
+
+           
+            var password = document.getElementById('password').value;
+            if (!password) {
+                document.getElementById('password').classList.add('is-invalid');
+                isValid = false;
+            } else {
+                document.getElementById('password').classList.remove('is-invalid');
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

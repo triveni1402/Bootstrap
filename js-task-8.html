@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js task-8</title>
+</head>
+<body>
+   
+    <div class="box">
+        <h1>Registration Form</h1>
+    <form id="form-group" onsubmit="return validateForm()">
+    <table>
+        <tr>
+            <td><label for="firstname">First Name</label></td>
+                <td><input type="text" id="first name" name="first name"></td>
+                <td><span id="firstnameError" class="poor"></span></td>
+        </tr>
+        <tr>
+            <td><label for="lastname">Last Name</label></td>
+                <td><input type="text" id="last name" name="last name"></td>
+                <td><span id="lastnameError" class="poor"></span></td>
+        </tr>
+        <tr>
+            <td><label for="email">Email</label></td>
+                <td><input type="text" id="email" name="email" ></td>
+                <td><span id="emailError" class="poor"></span></td>
+        </tr>
+        <tr>
+            <td><label for="password">Password</label></td>
+                <td> <input type="password" id="password" name="password" ></td>
+                <td><span id="passwordError" class="poor"></span></td>
+        </tr>
+        <tr>
+            <td><label for="re-enterpassword">Re-Enter Password</label></td>
+                <td> <input type="password" id="password" name="password" ></td>
+                <td><span id="passwordError" class="poor or mismatch"></span></td>
+        </tr>
+        <tr>
+            <td rowspan="2">Gender</td>
+                <td>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="gender" value="male">Male
+                        </label></td>
+                        <tr> <td><label>
+                            <input type="radio" name="gender" value="female">Female
+                        </label>
+                    </td>
+                    </tr>
+                    </div>
+                </td>
+        </tr>
+        <tr>
+            <td><label for="age">Age</label></td>
+                <td><input type="number" id="age" name="age" ></td>
+                <td><span id="ageError" class="poor"></span></td>
+        </tr>
+        <tr>
+            <td><label for="phonenumber">Phone number</label></td>
+                <td><input type="number" id="phone-number" name="phone-number" ></td>
+                <td><span id="phonenumberError" class="poor"></span></td>
+        </tr>
+        <tr>
+            <td><label for="address">Address</label></td>
+                <td><textarea rows="5" cols="20" class="space"></textarea></td>
+                <td><span id="addressError" class="poor"></span></td>
+        </tr>
+        <tr>
+            <td><label for="state">State</label></td>
+                <td><input type="text" id="state" name="state"></td>
+                <td><span id="stateError" class="poor"></span></td>
+        </tr>
+        <tr>
+            <td>Country</td>
+                <td> <select id="country" name="country" required>
+                    <option value="" able selected>Choose your country</option>
+                    <option value="in">India</option>
+                    <option value="sr">Sri lanka</option>
+                    <option value="ba">Bangladesh</option>
+                    <option value="ne">Nepal</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td>Languages Known</td>
+                <td colspan="4"><input type="checkbox" id="english" name="english">
+                <label for="english">English</label>
+                <input type="checkbox" id="Kannada" name="kannada">
+                <label for="kannada">Kannada</label>
+                <input type="checkbox" id="hindi" name="hindi">
+                <label for="hindi">Hindi</label>
+                <input type="checkbox" id="telugu" name="telugu">
+                <label for="telugu">Telugu</label>
+            </td>
+            </tr>
+        <tr>
+            <td colspan="2"><input type="checkbox">Hereby I declare all the given details are true</td>
+        </tr>
+        </tr>
+        <tr>
+            <td colspan="2"><p style="float:right; height: 0.2px; margin-top:0px" >Log in to the <a href="">Ethnus</a> website </p></td>
+        </tr>
+    </table>
+    <p style="text-align:left "><button type="submit">Register</button></p>
+    </form>
+</div>
+</body>  
+</html>
+<script>
+    function validateForm() {
+        let valid = true;
+        document.querySelectorAll('.poor').forEach(el => el.innerText = '');
+        document.querySelectorAll('input, textarea').forEach(el => el.classList.remove('poor-field'));
+        let firstname = document.getElementById("firstname").value;
+        if (name === "") {
+            document.getElementById("firstnameError").innerText = "poor";
+            document.getElementById("firstname").classList.add('poorr-field');
+            valid = false;
+        }
+        let lastname = document.getElementById("name").value;
+        if (name === "") {
+            document.getElementById("lastnameError").innerText = "poor";
+            document.getElementById("lastname").classList.add('poorr-field');
+            valid = false;
+        }
+        let email = document.getElementById("email").value;
+        let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (email === "") {
+            document.getElementById("emailError").innerText = "poor";
+            document.getElementById("email").classList.add('poor-field');
+            valid = false;
+        } else if (!email.match(emailPattern)) {
+            document.getElementById("emailError").innerText = "A valid email address is required";
+            document.getElementById("email").classList.add('error-field');
+            valid = false;
+        }
+        let password= document.getElementById("password").value;
+            if (message === "") {
+                document.getElementById("passwordError").innerText = "poor";
+                document.getElementById("password").classList.add('poor-field');
+                valid = false;
+            }
+        let reenterpassword= document.getElementById("password").value;
+            if (message === "") {
+                document.getElementById("passwordError").innerText = "poor or mismatch";
+                document.getElementById("password").classList.add('poor-field');
+                valid = false;
+            }
+        let age= document.getElementById("age").value;
+            if (message === "") {
+                document.getElementById("ageError").innerText = "poor";
+                document.getElementById("age").classList.add('poor-field');
+                valid = false;
+            }
+        let phonenumber= document.getElementById("phonenumber").value;
+            if (message === "") {
+                document.getElementById("phonenumberError").innerText = "poor";
+                document.getElementById("phonenumber").classList.add('poor-field');
+                valid = false;
+            } 
+        let address= document.getElementById("address").value;
+            if (message === "") {
+                document.getElementById("addressError").innerText = "poor";
+                document.getElementById("address").classList.add('poor-field');
+                valid = false;
+            } 
+        let state= document.getElementById("state").value;
+            if (message === "") {
+                document.getElementById("stateError").innerText = "poor";
+                document.getElementById("state").classList.add('poor-field');
+                valid = false;
+            }  
+
+            return valid;
+        }
+       </script>
+<style>
+    .box{
+        background: linear-gradient(to bottom right, #ffecd2, #fcb69f);
+        padding: 25px;
+        top: 15%;
+        left: 35%;
+        position: absolute;
+    }
+         .poor {
+            color: red;
+            font-size: 0.9em;
+            margin-left: 5px;
+        }
+        input, textarea {
+            border: 1px solid #ccc;
+            padding: 5px;
+            
+        }
+        .poor-field {
+            border-color: red;
+        }
+        .form-group input:invalid,
+    .form-group textarea:invalid {
+        border-color: #e74c3c;
+        
+    }
+      
+
+</style>

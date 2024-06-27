@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+       
+       .error {
+            color: red;
+            font-size: 0.9em;
+            margin-left: 5px;
+        }
+        input, textarea {
+            border: 1px solid #ccc;
+            padding: 5px;
+            
+        }
+       
+        .error-field {
+            border-color: red;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+</style>
+<body>
+    <form id="contactForm" onsubmit="return validateForm()">
+        <table>
+            <tr>
+            <td><label for="name">Name:</label></td>
+            <td><input type="text" id="name" name="name"></td>
+            <td><span id="nameError" class="error"></span></td>
+        </tr>
+        <tr>
+        <td><label for="email">Email:</label></td>
+            <td><input type="text" id="email" name="email"></td>
+                <td><span id="emailError" class="error"></span></td>
+            </tr>
+                <tr>
+                    <td><label for="website">Website:</label></td>
+                        <td><input type="text" id="website" name="website"></td>
+                            <td><span id="websiteError" class="error"></span></td>
+                        </tr>
+                           <tr>
+                                <td><label for="message">Message:</label></td>
+                                    <td><textarea id="message" name="message" rows="5" cols="20"></textarea></td>
+                                        <td><span id="messageError" class="error"></span></td>
+                                    </tr>
+            <td><input type="submit" value="Submit"></td>
+        </table>
+    
+    </form>
+
+    <script>
+        function validateForm() {
+            let valid = true;
+
+           
+            document.querySelectorAll('.error').forEach(el => el.innerText = '');
+            document.querySelectorAll('input, textarea').forEach(el => el.classList.remove('error-field'));
+
+           
+            let name = document.getElementById("name").value;
+            if (name === "") {
+                document.getElementById("nameError").innerText = "This field is required";
+                document.getElementById("name").classList.add('error-field');
+                valid = false;
+            }
+
+           
+            let email = document.getElementById("email").value;
+            let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (email === "") {
+                document.getElementById("emailError").innerText = "This field is required";
+                document.getElementById("email").classList.add('error-field');
+                valid = false;
+            } else if (!email.match(emailPattern)) {
+                document.getElementById("emailError").innerText = "A valid email address is required";
+                document.getElementById("email").classList.add('error-field');
+                valid = false;
+            }
+
+           
+            let website = document.getElementById("website").value;
+            let urlPattern = /^(https?:\/\/)?([^\s$.?#].[^\s]*)$/i;
+            if (website === "") {
+                document.getElementById("websiteError").innerText = "This field is required";
+                document.getElementById("website").classList.add('error-field');
+                valid = false;
+            } else if (!website.match(urlPattern)) {
+                document.getElementById("websiteError").innerText = "A valid URL is required";
+                document.getElementById("website").classList.add('error-field');
+                valid = false;
+            }
+
+          
+            let message = document.getElementById("message").value;
+            if (message === "") {
+                document.getElementById("messageError").innerText = "This field is required";
+                document.getElementById("message").classList.add('error-field');
+                valid = false;
+            }
+
+            return valid;
+        }
+    </script>
+</body>
+</html>
